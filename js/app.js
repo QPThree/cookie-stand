@@ -117,7 +117,6 @@ const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm
 const allStores = [seattle, tokyo, dubai, paris, lima];
 
 
-
 //function to publish cookies sales in sales.html
 //initial for loop is to fill each stores day of sales array
 // then function 1. runs through each store 2. adds <li> into html for that store that contains hour from hoursOpen array and the cookies sold in that hour from the given stores property
@@ -146,6 +145,8 @@ function publish () {
 
 }
 
+//TODO: Next function will publish just totals for each store into the aside menu on sales.html
+//steps: 1. create property (totalSold = 0) in each object for their totals (will be written to in publish for-loop) 2. function here will write values from allStores[i].totalSold into an <ol> in aside for each day
 
 
 //--------proofs of life below--------
