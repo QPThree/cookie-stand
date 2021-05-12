@@ -1,0 +1,15 @@
+
+h1{
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 5%;
+}
+
+ul {
+  list-style-position: inside;
+  list-style: square;
+  margin-left: 2%;
+}

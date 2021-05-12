@@ -130,7 +130,7 @@ function publish () {
   let total = 0;
   for (let i = 0; i < allStores.length; i++){
     let store = document.getElementById(allStores[i].name);
-    console.log(store.minCustomersPerHour);
+    console.log(store);
     for (let k = 0; k < hoursOpen.length; k++){
       li = document.createElement('li');
       store.appendChild(li);
