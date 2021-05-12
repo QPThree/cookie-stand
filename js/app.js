@@ -9,6 +9,7 @@ let seattle = {
   maxCustomersPerHour: 65,
   cookiesPerCustomer: 6.3,
   cookiesSoldPerHour: [],
+  
   //methods
   //generates random number of customers per hour
   calculateCustomersPerHour: function() {
@@ -21,9 +22,19 @@ let seattle = {
     }
     return this.cookiesSoldPerHour;
   },
+  maxSold: function(){
+    let output = 0;
+    let hour = '';
+    for (let i = 0; i < this.cookiesSoldPerHour.length; i ++){
+      if (this.cookiesSoldPerHour[i] > output){
+        output = this.cookiesSoldPerHour[i];
+        hour = hoursOpen[i];
+      }
+    }
+    return `${hour}:${output}`;
+  },
 
 };
-
 let tokyo = {
   //properties
   name: 'Tokyo',
@@ -43,9 +54,19 @@ let tokyo = {
     }
     return this.cookiesSoldPerHour;
   },
+  maxSold: function(){
+    let output = 0;
+    let hour = '';
+    for (let i = 0; i < this.cookiesSoldPerHour.length; i ++){
+      if (this.cookiesSoldPerHour[i] > output){
+        output = this.cookiesSoldPerHour[i];
+        hour = hoursOpen[i];
+      }
+    }
+    return `${hour}:${output}`;
+  },
 
 };
-
 let dubai = {
   //properties
   name: 'Dubai',
@@ -64,6 +85,17 @@ let dubai = {
       this.cookiesSoldPerHour.push(Math.ceil(this.cookiesPerCustomer * this.calculateCustomersPerHour()));
     }
     return this.cookiesSoldPerHour;
+  },
+  maxSold: function(){
+    let output = 0;
+    let hour = '';
+    for (let i = 0; i < this.cookiesSoldPerHour.length; i ++){
+      if (this.cookiesSoldPerHour[i] > output){
+        output = this.cookiesSoldPerHour[i];
+        hour = hoursOpen[i];
+      }
+    }
+    return `${hour}:${output}`;
   },
 
 };
@@ -86,6 +118,17 @@ let paris = {
     }
     return this.cookiesSoldPerHour;
   },
+  maxSold: function(){
+    let output = 0;
+    let hour = '';
+    for (let i = 0; i < this.cookiesSoldPerHour.length; i ++){
+      if (this.cookiesSoldPerHour[i] > output){
+        output = this.cookiesSoldPerHour[i];
+        hour = hoursOpen[i];
+      }
+    }
+    return `${hour}:${output}`;
+  }
 
 };
 let lima = {
@@ -106,6 +149,17 @@ let lima = {
       this.cookiesSoldPerHour.push(Math.ceil(this.cookiesPerCustomer * this.calculateCustomersPerHour()));
     }
     return this.cookiesSoldPerHour;
+  },
+  maxSold: function(){
+    let output = 0;
+    let hour = '';
+    for (let i = 0; i < this.cookiesSoldPerHour.length; i ++){
+      if (this.cookiesSoldPerHour[i] > output){
+        output = this.cookiesSoldPerHour[i];
+        hour = hoursOpen[i];
+      }
+    }
+    return `${hour}:${output}`;
   },
 
 };
@@ -145,9 +199,17 @@ function publish () {
 
 }
 
-//TODO: Next function will publish just totals for each store into the aside menu on sales.html
+//function will publish just totals for each store into the aside menu on sales.html
 //steps: 1. create property (totalSold = 0) in each object for their totals (will be written to in publish for-loop) 2. function here will write values from allStores[i].totalSold into an <ol> in aside for each day
 
+function publishBestHoursEachStore(){
+  for (let i = 0; i < allStores.length; i++){
+    let e = document.getElementById('totals-max-hour');
+    let li = document.createElement('li');
+    li.innerHTML = `${allStores[i].name}: ${allStores[i].maxSold()}`;
+    e.appendChild(li);
+  }
+}
 
 //--------proofs of life below--------
 //2. use method to generate random number of customers per hour
@@ -158,3 +220,8 @@ function publish () {
 // console.log(tokyo.completeDay());
 
 publish();
+publishBestHoursEachStore();
+console.log(seattle.maxSold());
+console.log(seattle.maxSold());
+
+
