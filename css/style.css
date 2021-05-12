@@ -16,11 +16,13 @@ header{
 }
 
 h1{
-  font-size: 3em;
+  font-size: 4em;
+  font-family: Pirata One, serif;
 }
 
 h2 {
   font-size: 1.5em;
+  font-family: Pirata One, serif;
   margin-bottom: 5%;
 }
 
