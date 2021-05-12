@@ -1,4 +1,4 @@
-# LAB - Number
+# Cookie Stand - Lab06
 
 ## Project Name
 
