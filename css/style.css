@@ -1,5 +1,5 @@
 body{
-  background-image: url("../img/piratewood.jpg");
+  background-image: url("../img/woodenbrick.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -12,12 +12,13 @@ header{
   background-image:url("../img/patsalmon.png");
   background-repeat: no-repeat;
   background-size:contain;
-  background-position: center;
+  background-position:70%;
 }
 
 h1{
   font-size: 4em;
   font-family: Pirata One, serif;
+  float: left;
 }
 
 h2 {
