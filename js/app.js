@@ -9,7 +9,7 @@ let seattle = {
   maxCustomersPerHour: 65,
   cookiesPerCustomer: 6.3,
   cookiesSoldPerHour: [],
-  
+
   //methods
   //generates random number of customers per hour
   calculateCustomersPerHour: function() {
@@ -169,8 +169,8 @@ const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm
 const allStores = [seattle, tokyo, dubai, paris, lima];
 
 //function to publish cookies sales in sales.html
-//initial for loop is to fill each stores day of sales array
-// then function 1. runs through each store 2. adds <li> into html for that store that contains hour from hoursOpen array and the cookies sold in that hour from the given stores property
+//initial for lo oop is to fill each stores day of sales array
+// then the function: 1. runs through each store 2. adds <li> into html for that store that contains hour from hoursOpen array and the cookies sold in that hour from the given stores property
 function publish () {
   for (let i = 0; i < allStores.length; i++){
     allStores[i].calculateCustomersPerHour();
@@ -209,16 +209,13 @@ function publishBestHoursEachStore(){
 }
 
 //--------proofs of life below--------
-//2. use method to generate random number of customers per hour
 // console.log(seattle.calculateCustomersPerHour());
 // console.log(tokyo.calculateCustomersPerHour());
-// // //3. calculate and store a complete day of cookie sales by hour
 // console.log(seattle.completeDay());
 // console.log(tokyo.completeDay());
 
 publish();
 publishBestHoursEachStore();
-console.log(seattle.maxSold());
-console.log(seattle.maxSold());
+
 
 
