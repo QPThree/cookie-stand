@@ -123,7 +123,16 @@ footer{
   padding: 3%;
   text-align: center;
 }
+.nav li{
+  margin-bottom: 15px;
+}
 
-a{
+.nav a {
+  font-size: 24px;
+  font-family: Open Sans;
   text-decoration: none;
+  color:#FFF;
+}
+a:hover{
+  border:solid black 4px; 
 }
