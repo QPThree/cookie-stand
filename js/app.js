@@ -262,8 +262,8 @@ let lima = {
 //global variables
 const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 const allStores = [seattle, tokyo, dubai, paris, lima];
-//function will publish just totals for each store into the aside menu on sales.html
-//steps: 1. create property (totalSold = 0) in each object for their totals (will be written to in publish for-loop) 2. function here will write values from allStores[i].totalSold into an <ol> in aside for each day
+
+//functions
 function publishBestHoursEachStore(){
   for (let i = 0; i < allStores.length; i++){
     let e = document.getElementById('totals-max-hour');
@@ -272,10 +272,10 @@ function publishBestHoursEachStore(){
     e.appendChild(li);
   }
 }
-function render(arr){
+function renderAllStores(arr){
   for (let i = 0; i < arr.length; i++){
     arr[i].publish();
   }
 }
-render(allStores);
+renderAllStores(allStores);
 publishBestHoursEachStore();
