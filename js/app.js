@@ -34,6 +34,30 @@ let seattle = {
     return `${hour}:${output}`;
   },
 
+  //publish function
+  publish: function(){
+    this.calculateCustomersPerHour();
+    this.completeDay();
+
+    let li;
+    let total = 0;
+
+    let store = document.getElementById(this.name);
+    console.log(store);
+    for (let k = 0; k < hoursOpen.length; k++){
+      li = document.createElement('li');
+      store.appendChild(li);
+      li.innerHTML = `${hoursOpen[k]}: ${this.cookiesSoldPerHour[k]}`;
+      total = total + this.cookiesSoldPerHour[k];
+    }
+    li = document.createElement('li');
+    store.appendChild(li);
+    li.innerHTML = `Total: ${total}`;
+    total = 0;
+    li = '';
+
+  },
+
 };
 let tokyo = {
   //properties
@@ -64,6 +88,29 @@ let tokyo = {
       }
     }
     return `${hour}:${output}`;
+  },
+  //publish function
+  publish: function(){
+    this.calculateCustomersPerHour();
+    this.completeDay();
+
+    let li;
+    let total = 0;
+
+    let store = document.getElementById(this.name);
+    console.log(store);
+    for (let k = 0; k < hoursOpen.length; k++){
+      li = document.createElement('li');
+      store.appendChild(li);
+      li.innerHTML = `${hoursOpen[k]}: ${this.cookiesSoldPerHour[k]}`;
+      total = total + this.cookiesSoldPerHour[k];
+    }
+    li = document.createElement('li');
+    store.appendChild(li);
+    li.innerHTML = `Total: ${total}`;
+    total = 0;
+    li = '';
+
   },
 
 };
@@ -97,6 +144,29 @@ let dubai = {
     }
     return `${hour}:${output}`;
   },
+  //publish function
+  publish: function(){
+    this.calculateCustomersPerHour();
+    this.completeDay();
+
+    let li;
+    let total = 0;
+
+    let store = document.getElementById(this.name);
+    console.log(store);
+    for (let k = 0; k < hoursOpen.length; k++){
+      li = document.createElement('li');
+      store.appendChild(li);
+      li.innerHTML = `${hoursOpen[k]}: ${this.cookiesSoldPerHour[k]}`;
+      total = total + this.cookiesSoldPerHour[k];
+    }
+    li = document.createElement('li');
+    store.appendChild(li);
+    li.innerHTML = `Total: ${total}`;
+    total = 0;
+    li = '';
+
+  },
 
 };
 let paris = {
@@ -128,7 +198,30 @@ let paris = {
       }
     }
     return `${hour}:${output}`;
-  }
+  },
+  //publish function
+  publish: function(){
+    this.calculateCustomersPerHour();
+    this.completeDay();
+
+    let li;
+    let total = 0;
+
+    let store = document.getElementById(this.name);
+    console.log(store);
+    for (let k = 0; k < hoursOpen.length; k++){
+      li = document.createElement('li');
+      store.appendChild(li);
+      li.innerHTML = `${hoursOpen[k]}: ${this.cookiesSoldPerHour[k]}`;
+      total = total + this.cookiesSoldPerHour[k];
+    }
+    li = document.createElement('li');
+    store.appendChild(li);
+    li.innerHTML = `Total: ${total}`;
+    total = 0;
+    li = '';
+
+  },
 
 };
 let lima = {
@@ -161,6 +254,29 @@ let lima = {
     }
     return `${hour}:${output}`;
   },
+  //publish function
+  publish: function(){
+    this.calculateCustomersPerHour();
+    this.completeDay();
+
+    let li;
+    let total = 0;
+
+    let store = document.getElementById(this.name);
+    console.log(store);
+    for (let k = 0; k < hoursOpen.length; k++){
+      li = document.createElement('li');
+      store.appendChild(li);
+      li.innerHTML = `${hoursOpen[k]}: ${this.cookiesSoldPerHour[k]}`;
+      total = total + this.cookiesSoldPerHour[k];
+    }
+    li = document.createElement('li');
+    store.appendChild(li);
+    li.innerHTML = `Total: ${total}`;
+    total = 0;
+    li = '';
+
+  },
 
 };
 
@@ -168,37 +284,8 @@ let lima = {
 const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 const allStores = [seattle, tokyo, dubai, paris, lima];
 
-//function to publish cookies sales in sales.html
-//initial for lo oop is to fill each stores day of sales array
-// then the function: 1. runs through each store 2. adds <li> into html for that store that contains hour from hoursOpen array and the cookies sold in that hour from the given stores property
-function publish () {
-  for (let i = 0; i < allStores.length; i++){
-    allStores[i].calculateCustomersPerHour();
-    allStores[i].completeDay();
-  }
-  let li;
-  let total = 0;
-  for (let i = 0; i < allStores.length; i++){
-    let store = document.getElementById(allStores[i].name);
-    console.log(store);
-    for (let k = 0; k < hoursOpen.length; k++){
-      li = document.createElement('li');
-      store.appendChild(li);
-      li.innerHTML = `${hoursOpen[k]}: ${allStores[i].cookiesSoldPerHour[k]}`;
-      total = total + allStores[i].cookiesSoldPerHour[k];
-    }
-    li = document.createElement('li');
-    store.appendChild(li);
-    li.innerHTML = `Total: ${total}`;
-    total = 0;
-    li = '';
-  }
-
-}
-
 //function will publish just totals for each store into the aside menu on sales.html
 //steps: 1. create property (totalSold = 0) in each object for their totals (will be written to in publish for-loop) 2. function here will write values from allStores[i].totalSold into an <ol> in aside for each day
-
 function publishBestHoursEachStore(){
   for (let i = 0; i < allStores.length; i++){
     let e = document.getElementById('totals-max-hour');
@@ -208,14 +295,11 @@ function publishBestHoursEachStore(){
   }
 }
 
-//--------proofs of life below--------
-// console.log(seattle.calculateCustomersPerHour());
-// console.log(tokyo.calculateCustomersPerHour());
-// console.log(seattle.completeDay());
-// console.log(tokyo.completeDay());
+function render(arr){
+  for (let i = 0; i < arr.length; i++){
+    arr[i].publish();
+  }
+}
 
-publish();
+render(allStores);
 publishBestHoursEachStore();
-
-
-
