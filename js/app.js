@@ -6,7 +6,7 @@ const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm
 let allStores = [];
 
 
-//constructor function
+//---constructor function---
 
 function CreateStore (name, min, max, cpc){
   //propertiers from arguments
@@ -20,29 +20,28 @@ function CreateStore (name, min, max, cpc){
   this.totalSoldInDay = 0;
 
   //run on creation
-  allStores.push(this);
-  // this.publish();
-
-  this.completeDay();
-  this.publishBestHour();
-
+  allStores.push(this); //object pushed to allStores array
+  this.completeDay(); //fills a "day" of sale
+  this.publishBestHour(); //publishes best hour of sales in aside
   this.calcTotalDaySales();
-  this.publishTableBody();
+  this.publishTableBody(); //publishes sales into body of html table
 
 }
 
-//prototype methods
+//----prototype methods----
+
+//function uses random() to calcuale customers per hour
 CreateStore.prototype.calculateCustomersPerHour = function(){
   return Math.floor(Math.random() * (this.maxCustomersPerHour - this.minCustomersPerHour + 1) + this.minCustomersPerHour);
 };
-
+//pushes into cookiessoldperhour array using our calcualte customers per hour function.  Completes a full "day"
 CreateStore.prototype.completeDay = function(){
   for (let i = 0; i < 14; i++){
     this.cookiesSoldPerHour.push(Math.ceil(this.cookiesPerCustomer * this.calculateCustomersPerHour()));
   }
   return this.cookiesSoldPerHour;
 };
-
+//function maxSold finds the objects single most profitable hour
 CreateStore.prototype.maxSold = function(){
   let output = 0;
   let hour = '';
@@ -54,7 +53,7 @@ CreateStore.prototype.maxSold = function(){
   }
   return `${hour}:${output}`;
 };
-
+//function not needed post lab7.  Was used to fill each stores card with sales info
 CreateStore.prototype.publish = function(){
   this.calculateCustomersPerHour();
   this.completeDay();
@@ -74,7 +73,7 @@ CreateStore.prototype.publish = function(){
   total = 0;
   li = '';
 };
-
+//uses maxSold to publish stores best hour into our html aside that has "stats"
 CreateStore.prototype.publishBestHour = function (){
   let e = document.getElementById('totals-max-hour');
   let li = document.createElement('li');
@@ -82,7 +81,7 @@ CreateStore.prototype.publishBestHour = function (){
   e.appendChild(li);
 
 };
-
+//function creates row for the given object and fills it with the objects daily sales info from completeDay function
 CreateStore.prototype.publishTableBody = function(){
   let e = document.getElementById('table-body');
   let tr = document.createElement('tr');
@@ -100,7 +99,7 @@ CreateStore.prototype.publishTableBody = function(){
   tr.appendChild(td);
   e.appendChild(tr);
 };
-
+//iterates through cookiesSoldPerHour for object and returns the sum as property (totalSoldInDay) of object
 CreateStore.prototype.calcTotalDaySales = function(){
   for (let i = 0; i < this.cookiesSoldPerHour.length; i++){
     this.totalSoldInDay += this.cookiesSoldPerHour[i];
@@ -110,6 +109,7 @@ CreateStore.prototype.calcTotalDaySales = function(){
 
 
 //1. Stores created with constructor baby
+//2. On construction, multiple methods are run. See constructor function for details. Objects are also pushed to allStores array upon creation
 // eslint-disable-next-line no-unused-vars
 let seattle = new CreateStore('Seattle', 23, 65, 6.3);
 // eslint-disable-next-line no-unused-vars
@@ -122,7 +122,7 @@ let paris = new CreateStore('Paris', 20, 38, 2.3);
 let lima = new CreateStore('Lima', 2, 16, 4.6);
 
 //helper functions
-
+//creates elements for table head and publishes in sale.html
 function publishTableHead(){
   let e = document.getElementById('table-head');
   let tr = document.createElement('tr');
@@ -141,7 +141,8 @@ function publishTableHead(){
   e.appendChild(tr);
   
 }
-
+//creates array that stores hourly total for all stores combined
+//outer loop iterates through array passed in as argument. inner loop totalies each index with that stores respective index (+=).
 function hourlyTotals(arr){
   let outputArray = new Array(14).fill(0);
   for (let i = 0; i < arr.length; i++){
@@ -151,7 +152,7 @@ function hourlyTotals(arr){
   }
   return outputArray;
 }
-
+//function creates table foot row and cells. Before loop, we creat a cell title that sits beneath the cells with each city name.
 function publishTableFoot(arr){
   let e = document.getElementById('table-foot');
   let tr = document.createElement('tr');
@@ -165,5 +166,7 @@ function publishTableFoot(arr){
   }
   e.appendChild(tr);
 }
+
+
 publishTableHead();
 publishTableFoot(hourlyTotals(allStores));
