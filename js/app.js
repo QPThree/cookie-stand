@@ -17,13 +17,16 @@ function CreateStore (name, min, max, cpc){
 
   //other properties
   this.cookiesSoldPerHour = [];
+  this.totalSoldInDay = 0;
 
   //run on creation
   allStores.push(this);
   // this.publish();
-  
+
   this.completeDay();
   this.publishBestHour();
+
+  this.calcTotalDaySales();
   this.publishTableBody();
 
 }
@@ -92,7 +95,17 @@ CreateStore.prototype.publishTableBody = function(){
     tr.appendChild(td);
     console.log('inside publish table body function');
   }
+  td = document.createElement('td');
+  td.innerHTML = this.totalSoldInDay;
+  tr.appendChild(td);
   e.appendChild(tr);
+};
+
+CreateStore.prototype.calcTotalDaySales = function(){
+  for (let i = 0; i < this.cookiesSoldPerHour.length; i++){
+    this.totalSoldInDay += this.cookiesSoldPerHour[i];
+  }
+  console.log(this.totalSoldInDay);
 };
 
 
@@ -122,7 +135,11 @@ function publishTableHead(){
     tr.appendChild(td);
     console.log('inside table function');
   }
+  td = document.createElement('td');
+  td.innerHTML = ('Store Total');
+  tr.appendChild(td);
   e.appendChild(tr);
+  
 }
 
 function hourlyTotals(arr){
@@ -139,7 +156,7 @@ function publishTableFoot(arr){
   let e = document.getElementById('table-foot');
   let tr = document.createElement('tr');
   let td = document.createElement('td');
-  td.innerHTML = ('Totals');
+  td.innerHTML = ('Hourly Totals');
   tr.appendChild(td);
   for (let i = 0; i < arr.length; i++){
     td = document.createElement('td');
