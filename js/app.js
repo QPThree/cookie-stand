@@ -21,8 +21,9 @@ function CreateStore (name, min, max, cpc){
   //run on creation
   allStores.push(this);
   // this.publish();
-  this.publishBestHour();
+  
   this.completeDay();
+  this.publishBestHour();
   this.publishTableBody();
 
 }
@@ -134,7 +135,7 @@ function hourlyTotals(arr){
   return outputArray;
 }
 
-function publishTablerFoot(arr){
+function publishTableFoot(arr){
   let e = document.getElementById('table-foot');
   let tr = document.createElement('tr');
   let td = document.createElement('td');
@@ -148,4 +149,4 @@ function publishTablerFoot(arr){
   e.appendChild(tr);
 }
 publishTableHead();
-publishTablerFoot(hourlyTotals(allStores));
+publishTableFoot(hourlyTotals(allStores));
