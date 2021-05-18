@@ -1,10 +1,7 @@
 'use strict';
-console.log('Hello World');
-
 //global variables
 const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let allStores = [];
-
 
 //---constructor function---
 
@@ -36,7 +33,7 @@ CreateStore.prototype.calculateCustomersPerHour = function(){
 };
 //pushes into cookiessoldperhour array using our calcualte customers per hour function.  Completes a full "day"
 CreateStore.prototype.completeDay = function(){
-  for (let i = 0; i < 14; i++){
+  for (let i = 0; i < hoursOpen.length; i++){
     this.cookiesSoldPerHour.push(Math.ceil(this.cookiesPerCustomer * this.calculateCustomersPerHour()));
   }
   return this.cookiesSoldPerHour;
@@ -60,7 +57,6 @@ CreateStore.prototype.publish = function(){
   let li;
   let total = 0;
   let store = document.getElementById(this.name);
-  console.log(store);
   for (let k = 0; k < hoursOpen.length; k++){
     li = document.createElement('li');
     store.appendChild(li);
@@ -92,7 +88,6 @@ CreateStore.prototype.publishTableBody = function(){
     let td = document.createElement('td');
     td.innerHTML = `${this.cookiesSoldPerHour[i]}`;
     tr.appendChild(td);
-    console.log('inside publish table body function');
   }
   td = document.createElement('td');
   td.innerHTML = this.totalSoldInDay;
@@ -104,22 +99,16 @@ CreateStore.prototype.calcTotalDaySales = function(){
   for (let i = 0; i < this.cookiesSoldPerHour.length; i++){
     this.totalSoldInDay += this.cookiesSoldPerHour[i];
   }
-  console.log(this.totalSoldInDay);
 };
 
 
 //1. Stores created with constructor baby
 //2. On construction, multiple methods are run. See constructor function for details. Objects are also pushed to allStores array upon creation
-// eslint-disable-next-line no-unused-vars
-let seattle = new CreateStore('Seattle', 23, 65, 6.3);
-// eslint-disable-next-line no-unused-vars
-let tokyo = new CreateStore('Tokyo', 3, 24, 1.2);
-// eslint-disable-next-line no-unused-vars
-let dubai = new CreateStore('Dubai', 11, 38, 3.7);
-// eslint-disable-next-line no-unused-vars
-let paris = new CreateStore('Paris', 20, 38, 2.3);
-// eslint-disable-next-line no-unused-vars
-let lima = new CreateStore('Lima', 2, 16, 4.6);
+new CreateStore('Seattle', 23, 65, 6.3);
+new CreateStore('Tokyo', 3, 24, 1.2);
+new CreateStore('Dubai', 11, 38, 3.7);
+new CreateStore('Paris', 20, 38, 2.3);
+new CreateStore('Lima', 2, 16, 4.6);
 
 //helper functions
 //creates elements for table head and publishes in sale.html
@@ -133,13 +122,11 @@ function publishTableHead(){
     td = document.createElement('td');
     td.innerHTML = `${hoursOpen[i]}`;
     tr.appendChild(td);
-    console.log('inside table function');
   }
   td = document.createElement('td');
   td.innerHTML = ('Store Total');
   tr.appendChild(td);
   e.appendChild(tr);
-  
 }
 //creates array that stores hourly total for all stores combined
 //outer loop iterates through array passed in as argument. inner loop totalies each index with that stores respective index (+=).
