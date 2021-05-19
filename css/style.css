@@ -112,6 +112,18 @@ h3{
 }
 .div8 { 
   grid-area: 2 / 3 / 7 / 4; 
+  
+}
+
+.nav{
+  padding: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+  background: #e6e0e0;
+  box-shadow:  20px 20px 60px #c4bebe,
+             -20px -20px 60px #ffffff;
+  text-align: center;
+  height: 30%;
 }
 
 section{
@@ -131,23 +143,13 @@ section ul{
   list-style: square;
   margin-left: 2%;
 }
-aside{
-  padding: 5%;
-  margin-right: 5%;
-  border-radius: 10px;
-  background: #e6e0e0;
-  box-shadow:  20px 20px 60px #c4bebe,
-             -20px -20px 60px #ffffff;
-  text-align: center;
-  height: 30%;
-}
 
 footer{
   padding: 3%;
   text-align: center;
 }
 .nav li{
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 .nav a {
@@ -173,4 +175,93 @@ thead{
 }
 td:first-child{
   font-weight: bold;
+}
+
+/* aside photos */
+aside .photos{
+  margin-top: 25px;
+}
+#photo-1{
+  height: 100px;
+  width: 175px;
+  float:left;
+  background-image: url("../img/frosted-cookie.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#photo-2{
+  margin-right: 20px;
+  height: 100px;
+  width: 175px;
+  float:right;
+  background-image: url("../img/shirt.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#photo-3{
+  height: 100px;
+  width: 175px;
+  margin-top: 25px;
+  float:left;
+  background-image: url("../img/family.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#photo-4{
+  margin-right: 20px;
+  height: 100px;
+  width: 175px;
+  margin-top: 25px;
+  float:right;
+  background-image: url("../img/cutter.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#photo-5{
+  height: 100px;
+  width: 175px;
+  margin-top: 25px;
+  float:left;
+  background-image: url("../img/chinook.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+#photo-6{
+  margin-right: 20px;
+  height: 100px;
+  width: 175px;
+  margin-top: 25px;
+  float:right;
+  background-image: url("../img/fish.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#photo-1,
+#photo-2,
+#photo-3,
+#photo-4,
+#photo-5,
+#photo-6{
+  text-align: center;
+  border: solid black 2px;
+  
+}
+#photo-1 p,
+#photo-2 p,
+#photo-3 p,
+#photo-4 p,
+#photo-5 p,
+#photo-6 p{
+  align-content: center;
+  padding-top: 25%;
+  font-weight: bold;
+  font-family: Pirata One, serif;
+  color:#fff;
 }
