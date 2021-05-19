@@ -176,9 +176,9 @@ a:hover{
 }
 table{
   border-collapse: separate;
-  border-spacing: 2em;
+  border-spacing: 1em;
   border-radius: 50px;
-  font-size: 1.2em;
+  font-size: 1em;
   background: #e6e0e0;
   box-shadow:  20px 20px 60px #c4bebe,
              -20px -20px 60px #ffffff;
