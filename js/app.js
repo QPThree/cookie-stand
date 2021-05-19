@@ -82,7 +82,7 @@ CreateStore.prototype.publishTableBody = function(){
   let e = document.getElementById('table-body');
   let tr = document.createElement('tr');
   let td = document.createElement('td');
-  td.innerHTML = (this.name);
+  td.innerHTML = this.name;
   tr.appendChild(td);
   for (let i = 0; i < this.cookiesSoldPerHour.length; i++){
     let td = document.createElement('td');
@@ -116,7 +116,7 @@ function publishTableHead(){
   let e = document.getElementById('table-head');
   let tr = document.createElement('tr');
   let td = document.createElement('td');
-  td.innerHTML = ('City');
+  td.innerHTML = 'City';
   tr.appendChild(td);
   for (let i = 0; i < hoursOpen.length; i++){
     td = document.createElement('td');
