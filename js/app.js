@@ -157,6 +157,38 @@ function publishTableFoot(arr){
   e.appendChild(tr);
 }
 
+function rankStores(arr){
+  let unrankedArr = [];
+  let rankedArr = new Array(arr.length);
+  let storeNamesRanked = new Array(arr.length);
+  for (let i = 0; i < arr.length; i++){
+    unrankedArr.push(arr[i].totalSoldInDay);
+  }
+  for (let k = 0; k < arr.length; k++){
+    let rank = arr.length - 1;
+    for (let j = 0; j < arr.length; j++){
+      if (unrankedArr[k] > unrankedArr[j]){
+        rank = rank - 1;
+      }
+    }
+    rankedArr[rank] = unrankedArr[k];
+  }
+  for (let i = 0; i < arr.length; i++){
+    for (let k = 0; k < arr.length; k++){
+      if (allStores[i].totalSoldInDay === rankedArr[k]){
+        storeNamesRanked[k] = allStores[i].name;
+      }
+    }
+  }
+  let e = document.getElementById('totals-rank-stores');
+  for (let i = 0; i < arr.length; i++){
+    let li = document.createElement('li');
+    li.textContent = `${storeNamesRanked[i]}: ${rankedArr[i]}`;
+    e.appendChild(li);
+  }
+}
 
 publishTableHead();
 publishTableFoot(hourlyTotals(allStores));
+
+rankStores(allStores);
