@@ -183,7 +183,7 @@ function rankStores(arr){
   let e = document.getElementById('totals-rank-stores');
   for (let i = 0; i < arr.length; i++){
     let li = document.createElement('li');
-    li.textContent = `${storeNamesRanked[i]}: ${rankedArr[i]}`;
+    li.textContent = `${i+1}. ${storeNamesRanked[i]}: ${rankedArr[i]}`;
     e.appendChild(li);
   }
 }
