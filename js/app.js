@@ -131,12 +131,15 @@ function publishTableHead(){
 //creates array that stores hourly total for all stores combined
 //outer loop iterates through array passed in as argument. inner loop totalies each index with that stores respective index (+=).
 function hourlyTotals(arr){
-  let outputArray = new Array(14).fill(0);
+  let outputArray = new Array(hoursOpen.length + 1).fill(0);
+  let grandTotal = 0;
   for (let i = 0; i < arr.length; i++){
     for(let k = 0; k < arr[i].cookiesSoldPerHour.length; k++){
       outputArray[k] = outputArray[k] + arr[i].cookiesSoldPerHour[k];
+      grandTotal += arr[i].cookiesSoldPerHour[k];
     }
   }
+  outputArray[outputArray.length - 1] = grandTotal;
   return outputArray;
 }
 //function creates table foot row and cells. Before loop, we creat a cell title that sits beneath the cells with each city name.
