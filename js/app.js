@@ -184,6 +184,7 @@ function rankStores(arr){
     }
   }
   let e = document.getElementById('totals-rank-stores');
+  e.innerHTML = '';
   for (let i = 0; i < arr.length; i++){
     let li = document.createElement('li');
     li.textContent = `${i+1}. ${storeNamesRanked[i]}: ${rankedArr[i]}`;
@@ -204,11 +205,14 @@ function handleNewStore(event){
   console.log(storeName, minCust, maxCust, avgSales);
 
   let newStore = new CreateStore(storeName, minCust, maxCust, avgSales);
-  publishTableFoot(hourlyTotals(allStores));
+  publishTableFoot(hourlyTotals(allStores)); //re-publishes footer with new store info
+  rankStores(allStores); //re-publishes ranking of stores
 }
+
+//run on page load
 publishTableHead();
 publishTableFoot(hourlyTotals(allStores));
-
 rankStores(allStores);
 
+//Event Listeners
 newStoreForm.addEventListener('submit', handleNewStore);
