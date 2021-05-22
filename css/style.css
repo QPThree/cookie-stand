@@ -180,7 +180,7 @@ a:hover{
 table{
   border-collapse: separate;
   border-spacing: 1em;
-  border-radius: 50px;
+  border-radius: 25px;
   font-size: 1em;
   background: #e6e0e0;
   box-shadow:  20px 20px 60px #c4bebe,
@@ -298,4 +298,46 @@ aside .photos{
   font-weight: bold;
   font-family: Pirata One, serif;
   color:#fff;
+}
+
+/* Form Styling */
+
+form{
+  width :max-content;
+  padding: 20px;
+  margin-bottom: 50px;
+  border-spacing: 1em;
+  border-radius: 20px;
+  font-size: 1em;
+  background: #e6e0e0;
+  box-shadow:  20px 20px 60px #c4bebe,
+             -20px -20px 60px #ffffff;
+}
+
+form h3{
+  margin-left: 50px;
+}
+
+input{
+  height: 15px;
+  width: 75px;
+  margin: 5px;
+  border-radius: 25px;
+  background: #e6e0e0;
+  box-shadow: inset 8px 8px 14px #c4bebe,
+              inset -8px -8px 14px #ffffff;
+}
+
+button{
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #f6f0f0, #cfcaca);
+  box-shadow:  10px 10px 16px #989494,
+             -10px -10px 16px #ffffff;
+  transition: 0.2s;
+}
+button:hover{
+  box-shadow: none;
 }
