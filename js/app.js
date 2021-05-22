@@ -3,6 +3,8 @@
 const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let allStores = [];
 
+let newStoreForm = document.getElementById('form');
+
 //---constructor function---
 
 function CreateStore (name, min, max, cpc){
@@ -187,8 +189,22 @@ function rankStores(arr){
     e.appendChild(li);
   }
 }
+function handleNewStore(event){
+  event.preventDefault();
+  console.log('in event handler');
 
+  let storeName = event.target.location.value;
+  let minCust = event.target.mincustomers.value;
+  let maxCust = event.target.maxcustomers.value;
+  let avgSales = event.target.cookiespersale.value;
+
+  console.log(storeName, minCust, maxCust, avgSales);
+
+  let newStore = new CreateStore(storeName, minCust, maxCust, avgSales);
+}
 publishTableHead();
 publishTableFoot(hourlyTotals(allStores));
 
 rankStores(allStores);
+
+newStoreForm.addEventListener('submit', handleNewStore);
