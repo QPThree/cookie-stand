@@ -3,6 +3,9 @@
 const hoursOpen = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 let allStores = [];
 
+//foothold for our event listener
+let newStoreForm = document.getElementById('form');
+
 //---constructor function---
 
 function CreateStore (name, min, max, cpc){
@@ -101,8 +104,7 @@ CreateStore.prototype.calcTotalDaySales = function(){
   }
 };
 
-
-//1. Stores created with constructor baby
+//1. Stores created with constructor
 //2. On construction, multiple methods are run. See constructor function for details. Objects are also pushed to allStores array upon creation
 new CreateStore('Seattle', 23, 65, 6.3);
 new CreateStore('Tokyo', 3, 24, 1.2);
@@ -145,6 +147,7 @@ function hourlyTotals(arr){
 //function creates table foot row and cells. Before loop, we creat a cell title that sits beneath the cells with each city name.
 function publishTableFoot(arr){
   let e = document.getElementById('table-foot');
+  e.innerHTML = ''; //clears the element so it doesnt add a new footer
   let tr = document.createElement('tr');
   let td = document.createElement('td');
   td.innerHTML = ('Hourly Totals');
@@ -181,6 +184,7 @@ function rankStores(arr){
     }
   }
   let e = document.getElementById('totals-rank-stores');
+  e.innerHTML = '';
   for (let i = 0; i < arr.length; i++){
     let li = document.createElement('li');
     li.textContent = `${i+1}. ${storeNamesRanked[i]}: ${rankedArr[i]}`;
@@ -188,7 +192,30 @@ function rankStores(arr){
   }
 }
 
+//creation of new store via form on sales.html
+function handleNewStore(event){
+  event.preventDefault();
+  console.log('in event handler');
+
+  //local variables passed as arguments to create now store
+  let storeName = event.target.location.value;
+  let minCust = event.target.mincustomers.value;
+  let maxCust = event.target.maxcustomers.value;
+  let avgSales = event.target.cookiespersale.value;
+
+
+  let newStore = new CreateStore(storeName, minCust, maxCust, avgSales);
+  publishTableFoot(hourlyTotals(allStores)); //re-publishes footer with new store info
+  rankStores(allStores); //re-publishes ranking of stores
+}
+
+
+//Event Listeners
+newStoreForm.addEventListener('submit', handleNewStore);
+
+//Runs on page load
 publishTableHead();
 publishTableFoot(hourlyTotals(allStores));
-
 rankStores(allStores);
+
+

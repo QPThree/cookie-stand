@@ -14,6 +14,29 @@
   </header>
   <!-- Main-->
   <main>
+    <!-- Form Here -->
+    <form id = "form">
+      <fieldset>
+       <legend>New Store Details</legend>
+       <label>Store Location
+         <input type="text" name="location" required="required">
+       </label>
+
+       <label>Min Customers
+        <input type="number" name="mincustomers" required="required">
+      </label>
+
+      <label>Max Customers
+        <input type="number" name="maxcustomers" required="required">
+      </label>
+
+      <label>Avg. Cookies Per Sale
+        <input type="number" step="0.1" name="cookiespersale" required="required">
+      </label>
+
+       <button type="submit">Add Store</button>
+      </fieldset>
+    </form>
     <!-- table here -->
     <table>
       <thead id="table-head"></thead>
@@ -31,6 +54,7 @@
       </ol>
     </div>
   </main>
+
   <aside class = "div8">
     <div class="nav" id = "sales-aside">
       <ul>
