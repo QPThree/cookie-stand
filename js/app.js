@@ -189,6 +189,8 @@ function rankStores(arr){
     e.appendChild(li);
   }
 }
+
+//handles submit event from new store form on sales.html
 function handleNewStore(event){
   event.preventDefault();
   console.log('in event handler');
