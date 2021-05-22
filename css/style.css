@@ -319,21 +319,25 @@ form h3{
 }
 
 input{
+  border:none;
   height: 15px;
-  width: 75px;
+  width: 100px;
   margin: 5px;
+  padding-left: 5px;
   border-radius: 25px;
   background: #e6e0e0;
-  box-shadow: inset 8px 8px 14px #c4bebe,
-              inset -8px -8px 14px #ffffff;
+  box-shadow: inset 4px 4px 7px #c4bebe,
+              inset -4px -4px 7px #ffffff;
 }
-
+input:focus, textarea{
+  outline: none !important;
+}
 button{
+  background:#58c454d5;
   margin-left: 10px;
   margin-top: 10px;
   height: 30px;
   border-radius: 10px;
-  background: linear-gradient(145deg, #f6f0f0, #cfcaca);
   box-shadow:  10px 10px 16px #989494,
              -10px -10px 16px #ffffff;
   transition: 0.2s;
