@@ -147,6 +147,7 @@ function hourlyTotals(arr){
 //function creates table foot row and cells. Before loop, we creat a cell title that sits beneath the cells with each city name.
 function publishTableFoot(arr){
   let e = document.getElementById('table-foot');
+  e.innerHTML = ''; //clears the element so it doesnt add a new footer
   let tr = document.createElement('tr');
   let td = document.createElement('td');
   td.innerHTML = ('Hourly Totals');
@@ -203,6 +204,7 @@ function handleNewStore(event){
   console.log(storeName, minCust, maxCust, avgSales);
 
   let newStore = new CreateStore(storeName, minCust, maxCust, avgSales);
+  publishTableFoot(hourlyTotals(allStores));
 }
 publishTableHead();
 publishTableFoot(hourlyTotals(allStores));
